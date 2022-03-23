@@ -60,8 +60,8 @@ def upload(request):
 			msg["msg"] = "msg: Starting running mile!"
 			root = f'backend/jobs'
 			out_format = 'edgelist'
-			coarsen_level = 2
-			embed_dim = 128
+			coarsen_level = int(data['coarsen'])
+			embed_dim = int(data['dim'])
 			language = 'python'
 			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language}')
 		except Exception:
