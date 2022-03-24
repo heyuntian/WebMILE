@@ -20,13 +20,13 @@ def createDocker(ctrl, language='python'):
 
 
 def base_embed(ctrl):
+    createDocker(ctrl, language=ctrl.language)
+    image_name = f't_{ctrl.jobid}_{ctrl.language[:2]}'  # Each task has a unique image name
+    os.system(f'docker build -t {image_name} {ctrl.path}')
     if ctrl.language == 'python':
-        createDocker(ctrl, language=ctrl.language)
-        image_name = f't_{ctrl.jobid}_{ctrl.language[:2]}'  # Each task has a unique image name
-        os.system(f'docker build -t {image_name} {ctrl.path}')
-        os.system(f'docker run -it --name embed_{ctrl.jobid} --rm --volume $(pwd):/usr/src/app --net=host {image_name}:latest python {ctrl.path}/src/embed.py --input {ctrl.coarsen_path} --output {ctrl.coarsen_embed} --embed-dim {ctrl.embed_dim} --workers {ctrl.workers}')
+        os.system(f'docker run -it --name embed_{ctrl.jobid} --rm --volume $(pwd):/usr/src/app --net=host {image_name}:latest python {ctrl.path}/src/embed.py --input {ctrl.coarsen_path} --output {ctrl.coarsen_embed} --embed-dim {ctrl.embed_dim} --workers {ctrl.workers} {ctrl.command}')
     elif ctrl.language == 'java':
-        pass
+        os.system(f'docker run -it --name embed_{ctrl.jobid} --rm --volume $(pwd):/usr/src/app --net=host {image_name}:latest java -jar embed.jar {ctrl.coarsen_path} {ctrl.coarsen_embed} {ctrl.embed_dim} {ctrl.workers} {ctrl.command}')
 
 if __name__ == '__main__':
     seed = 123

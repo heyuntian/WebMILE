@@ -47,6 +47,8 @@ def parse_args(useCoarsen=False, useEmbed=False, useRefine=False):
                             help='Number of latent dimensions to learn for each node.')
         parser.add_argument('--language', default='python', choices=['python', 'java'],
                             help='Language of the base embedding script.')
+        parser.add_argument('--arguments', type=str,
+                            help='Arguments for base embedding.')
     """
     Refinement parameters
     """
@@ -74,6 +76,7 @@ def updateCtrl(ctrl, args, useCoarsen=False, useEmbed=False, useRefine=False):
         ctrl.embed_dim = args.embed_dim
         ctrl.workers = args.workers
         ctrl.language = args.language
+        ctrl.command = args.arguments
 
     ctrl.resetTaskInfo(useEmbed=useEmbed)
 

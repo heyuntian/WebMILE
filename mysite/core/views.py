@@ -63,7 +63,8 @@ def upload(request):
 			coarsen_level = int(data['coarsen'])
 			embed_dim = int(data['dim'])
 			language = 'python'
-			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language}')
+			arguments = data['comm']
+			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language} --arguments "{arguments}"')
 		except Exception:
 			msg["msg"] = "msg: Please upload required files"
 	return render(request, 'upload.html',msg)
