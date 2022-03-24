@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>MILE</title>
+        <title>WebMILE</title>
         
         <!-- Core theme CSS (includes Bootstrap)-->
         <!-- CSS only -->
@@ -20,7 +20,7 @@
 <!-- Header-->
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
-                <h1 class="fw-bolder">MILE: A Multi-Level Framework for Scalable Graph Embedding</h1>
+                <h1 class="fw-bolder">WebMILE System</h1>
             </div>
         </header>
         <!-- About section-->
@@ -64,17 +64,14 @@
                     <div class = "parent">
                     <div class="child">
 		            <div class="row">
-				    <div class="col-md-2" style="margin-right:10%;">Language:</div>
-				    <div class="col-md-2">
-				    	<div class="btn-group">
-					    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Select</button>
-					    <div class="dropdown-menu">
-						<a href="#" class="dropdown-item">C</a>
-						<a href="#" class="dropdown-item">R</a>
-						<a href="#" class="dropdown-item">Python</a>
-						<a href="#" class="dropdown-item">Java</a>
-					    </div>
-					</div>
+				    <label for="language" class="col-md-2" style="margin-right:10%;">Language:</label>
+				    <div class="col-md-2">				    	
+					    <select name="language" id="language">
+						 <option value="python" name="python">Python</option>
+						 <option value="java" name="java">Java</option>
+						 <option value="r" name="r">R</option>
+					    </select>
+					    
 				    </div>
 		            </div>
                     </div>
@@ -102,6 +99,27 @@
                     
                     <div class = "box">
                     <div class="row">
+                    <div class="child">
+		            <div class="row">
+				    <label for="embedding" class="col-md-2" > Existing Embedding:</label>
+				    <div class="col-md-2">				    	
+					    <select name="embedding" id="embedding">
+						 <option value="none">None</option>
+						 <option value="deepwalk">DeepWalk</option>
+						 <option value="ntemf">NetMF</option>
+						 <option value="node2vec">LINE</option>
+						 <option value="node2vec">Node2Vec</option>
+						 <option value="deepwalk">GRAREP</option>
+					    </select>
+					    
+				    </div>
+		            </div>
+                    </div>
+                    </div>
+                    </div>
+                    
+                    <div class = "box">
+                    <div class="row">
 		            <div class="col-md-2">Execution Command:</div>
 		            <div><input id="comm" name = "comm" type="text" class="form-control w-75" id="comm" placeholder="java code.java -jar code.jar --param1 --param2"></div>
                     </div>
@@ -120,7 +138,7 @@
                     
 		    <p>{{ msg}}</p>
 		    {% if finish %}
-                    <a href="/backend/jobs/{jobid}/embbedings.txt" download>
+                    <a href="{{ download_link }}" download>
 			  Download the result
 			</a>
 			{% endif%}
@@ -138,16 +156,16 @@
 
 	<style>
 	header {
-	  padding-top: 9.5rem;
-	  padding-bottom: 6rem;
+	  padding-top: 4rem;
+	  padding-bottom: 3rem;
 	}
 	.lead {
 	  font-size: 1.25rem;
 	  font-weight: 300;
 	}
 	section {
-	  padding-top: 9rem;
-	  padding-bottom: 4rem;
+	  padding-top: 3rem;
+	  padding-bottom: 2rem;
 	}
 	.box {
 	  height:80px;
@@ -167,7 +185,7 @@
 	  display: inline-block;
 	  margin: 0px;
 	  flex-grow: 1;
-	  width: 33%;
+	  width: 32%;
 	}
 	.row{
 	  margin-right: 0px;

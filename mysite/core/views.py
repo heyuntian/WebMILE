@@ -30,6 +30,7 @@ def upload(request):
 			data["dim"] =  request.POST['dim']
 			data["coarsen"] =  request.POST['coarsen']
 			data['comm'] = request.POST['comm']
+			data["language"] = request.POST['language']
 			# print(graph, graph_name, graph.name)
 			# print(type(graph), type(graph_name), type(graph.name))
 			print("file save")
@@ -67,6 +68,10 @@ def upload(request):
 			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language} --arguments "{arguments}"')
 			msg["msg"] = 'Available to download'
 			msg["finish"]= True
+			embedding_path, new_path = f"backend/jobs/{jobid}/embeddings.txt", f'media/{jobid}_embeddings.txt'
+			os.rename(embedding_path, new_path)
+			msg['download_link'] = new_path
+
 		except Exception:
 			msg["msg"] = "msg: Please upload required files"
 	return render(request, 'upload.html',msg)
