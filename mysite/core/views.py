@@ -17,7 +17,7 @@ def getExtension(filename):
 
 def upload(request):
 	msg = {}
-	os.system("which python")
+	msg["finish"]= False
 	if request.method == 'POST':
 		try:
 			fs = FileSystemStorage()
@@ -65,6 +65,8 @@ def upload(request):
 			language = 'python'
 			arguments = data['comm']
 			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language} --arguments "{arguments}"')
+			msg["msg"] = 'Available to download'
+			msg["finish"]= True
 		except Exception:
 			msg["msg"] = "msg: Please upload required files"
 	return render(request, 'upload.html',msg)

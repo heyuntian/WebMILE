@@ -119,8 +119,11 @@
                     
                     
 		    <p>{{ msg}}</p>
-		    
-                    
+		    {% if finish %}
+                    <a href="/backend/jobs/{jobid}/embbedings.txt" download>
+			  Download the result
+			</a>
+			{% endif%}
                     </div>
                 </div>
             </div>
