@@ -2,3 +2,6 @@
 backend/jobs/.DS_Store
 .DS_Store
 *.pyc
+*.pyc
+backend/jobs/.DS_Store
+backend/jobs/test/.DS_Store

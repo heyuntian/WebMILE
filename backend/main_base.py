@@ -26,7 +26,7 @@ def base_embed(ctrl):
     if ctrl.language == 'python':
         os.system(f'docker run -it --name embed_{ctrl.jobid} --rm --volume $(pwd):/usr/src/app --net=host {image_name}:latest python {ctrl.path}/src/embed.py --input {ctrl.coarsen_path} --output {ctrl.coarsen_embed} --embed-dim {ctrl.embed_dim} --workers {ctrl.workers} {ctrl.command}')
     elif ctrl.language == 'java':
-        os.system(f'docker run -it --name embed_{ctrl.jobid} --rm --volume $(pwd):/usr/src/app --net=host {image_name}:latest java -jar embed.jar {ctrl.coarsen_path} {ctrl.coarsen_embed} {ctrl.embed_dim} {ctrl.workers} {ctrl.command}')
+        os.system(f'docker run -it --name embed_{ctrl.jobid} --rm --volume $(pwd):/usr/src/app --net=host {image_name}:latest java -jar {ctrl.path}/src/embed.jar --input {ctrl.coarsen_path} --output {ctrl.coarsen_embed} --embed-dim {ctrl.embed_dim} --workers {ctrl.workers} {ctrl.command}')
 
 if __name__ == '__main__':
     seed = 123

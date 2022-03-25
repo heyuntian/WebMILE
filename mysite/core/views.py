@@ -46,13 +46,15 @@ def upload(request):
 				os.mkdir(des_src)
 			in_format = getExtension(graph_name)
 			os.rename(f'media/{graph_name}', os.path.join(des, f'graph.{in_format}'))
+			print('move graph')
 			ext_script = getExtension(script_name)
 			if ext_script == 'zip':
 				os.system(f'mv media/{script_name} {des}')
 				os.system(f'unzip {des}/{script_name} -d {des_src}')
 				os.system(f'rm {des}/{script_name}')
 			else:
-				os.rename(f'media/{script_name}', os.path.join(des_src, script))  # Here we use the original name for the second argument
+				os.rename(f'media/{script_name}', os.path.join(des_src, f'embed.{ext_script}'))  # Here we use the original name for the second argument
+			print('move script')
 			os.rename(f'media/{others_name}', os.path.join(des, 'requirements.txt'))
 			os.system(f'rm media/{graph_name} media/{script_name} media/{others_name}')
 
@@ -63,9 +65,9 @@ def upload(request):
 			out_format = 'edgelist'
 			coarsen_level = int(data['coarsen'])
 			embed_dim = int(data['dim'])
-			language = 'python'
+			language = data['language'].lower()
 			arguments = data['comm']
-			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language} --arguments "{arguments}"')
+			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language}  --arguments "{arguments}"')
 			msg["msg"] = 'Available to download'
 			msg["finish"]= True
 			embedding_path, new_path = f"backend/jobs/{jobid}/embeddings.txt", f'media/{jobid}_embeddings.txt'

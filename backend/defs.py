@@ -26,6 +26,7 @@ class MILEAPIControl:
         """
         self.embed_dim = 128
         self.language = 'python'
+        self.command = ''
         self.refine_model = RefineModelSetting()
 
     def resetTaskInfo(self, useEmbed=False):
