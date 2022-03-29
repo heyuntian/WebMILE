@@ -14,7 +14,7 @@ Here are some arguments that can be passed to the program:
 * `--workers`: Number of threads. Use the maximum number of threads by default.
 * `--coarsen-level`: Number of levels of coarsening.
 * `--embed-dim`: Dimensionality of embeddings.
-* `--language`: Language of user's embedding script. Now it only supports `python` (by default) and `java`.
+* `--language`: Language of user's embedding script. Now it only supports `python` (by default), `java`, and `r`.
 * `--learning-rate`: Learning rate of the refinement model, `0.001` by default. 
 * `--self-weight`: Self-loop weight in the refinement model, `0.05` by default.
 
@@ -40,7 +40,7 @@ e.g.,
 `
 
 ---
-
+Here is an introduction to the base framework MILE.
 
 ### **MILE: A Multi-Level Framework for Scalable Graph Embedding**
 MILE is a multi-level framework to scale up existing graph embedding techniques, without modifying them. 
