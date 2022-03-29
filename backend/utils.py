@@ -45,7 +45,7 @@ def parse_args(useCoarsen=False, useEmbed=False, useRefine=False):
     if useEmbed:
         parser.add_argument('--embed-dim', default=128, type=int,
                             help='Number of latent dimensions to learn for each node.')
-        parser.add_argument('--language', default='python', choices=['python', 'java'],
+        parser.add_argument('--language', default='python', choices=['python', 'java', 'r'],
                             help='Language of the base embedding script.')
         parser.add_argument('--arguments', type=str, default='',
                             help='Arguments for base embedding.')

@@ -30,7 +30,7 @@ def upload(request):
 			data["dim"] =  request.POST['dim']
 			data["coarsen"] =  request.POST['coarsen']
 			data['comm'] = request.POST['comm']
-			data["language"] = request.POST['language']
+			data["language"] = request.POST['language'].lower()
 			# print(graph, graph_name, graph.name)
 			# print(type(graph), type(graph_name), type(graph.name))
 			print("file save")
@@ -55,7 +55,13 @@ def upload(request):
 			else:
 				os.rename(f'media/{script_name}', os.path.join(des_src, f'embed.{ext_script}'))  # Here we use the original name for the second argument
 			print('move script')
-			os.rename(f'media/{others_name}', os.path.join(des, 'requirements.txt'))
+
+			req_file_name = None
+			if data['language'] == 'python':
+				req_file_name = 'requirements.txt'
+			elif data['language'] == 'r':
+				req_file_name = 'install_packages.R'
+			os.rename(f'media/{others_name}', os.path.join(des, req_file_name))
 			os.system(f'rm media/{graph_name} media/{script_name} media/{others_name}')
 
 			# Run backend
@@ -65,7 +71,7 @@ def upload(request):
 			out_format = 'edgelist'
 			coarsen_level = int(data['coarsen'])
 			embed_dim = int(data['dim'])
-			language = data['language'].lower()
+			language = data['language']
 			arguments = data['comm']
 			os.system(f'python backend/main_API.py --root {root} --jobid {jobid} --in-format {in_format} --out-format {out_format} --coarsen-level {coarsen_level} --embed-dim {embed_dim} --language {language}  --arguments "{arguments}"')
 			msg["msg"] = 'Available to download'

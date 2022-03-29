@@ -1,0 +1,10 @@
+FROM rocker/tidyverse:latest
+WORKDIR /usr/src/app
+
+RUN apt-get update \
+  && apt-get install -y libgsl-dev python
+
+# install R-packages
+COPY install_packages.R .
+RUN Rscript install_packages.R
+
