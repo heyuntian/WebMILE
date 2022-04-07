@@ -18,15 +18,19 @@ def getExtension(filename):
 def upload(request):
 	msg = {}
 	msg["finish"]= False
+	msg["alert"] = False
 	if request.method == 'POST':
 		try:
+			msg["alert"] =True
 			fs = FileSystemStorage()
 			graph = request.FILES['graph']
 			graph_name = fs.save(graph.name, graph)
+			msg["graph"] = graph.name
 			script = request.FILES['script']
 			script_name = fs.save(script.name, script)
-			others = request.FILES['others']
-			others_name = fs.save(others.name, others)
+			msg["script"] = script.name
+			#others = request.FILES['others']
+			#others_name = fs.save(others.name, others)
 			data["dim"] =  request.POST['dim']
 			data["coarsen"] =  request.POST['coarsen']
 			data['comm'] = request.POST['comm']
@@ -35,7 +39,7 @@ def upload(request):
 			# print(type(graph), type(graph_name), type(graph.name))
 			print("file save")
 			print(data)
-
+			render(request, 'upload.html', msg)
 			# Move data to backend
 			jobid = random.randint(0, 1000000)  # random token
 			des = f'backend/jobs/{jobid}'
@@ -61,8 +65,8 @@ def upload(request):
 				req_file_name = 'requirements.txt'
 			elif data['language'] == 'r':
 				req_file_name = 'install_packages.R'
-			os.rename(f'media/{others_name}', os.path.join(des, req_file_name))
-			os.system(f'rm media/{graph_name} media/{script_name} media/{others_name}')
+			#os.rename(f'media/{others_name}', os.path.join(des, req_file_name))
+			os.system(f'rm media/{graph_name} media/{script_name}')
 
 			# Run backend
 			os.system('conda activate MILE-interface')
@@ -81,7 +85,7 @@ def upload(request):
 			msg['download_link'] = new_path
 
 		except Exception:
-			msg["msg"] = "msg: Please upload required files"
+			msg["msg"] = "msg: Please upload correct files"
 	return render(request, 'upload.html',msg)
 
 
