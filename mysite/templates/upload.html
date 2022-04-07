@@ -1,5 +1,5 @@
 {% load static %}<!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -10,188 +10,221 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <!-- CSS only -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=New+Tegomin:400">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 	
     </head>
-    <body id="page-top">
+    <body >
 
+        <div id="WebMILE-System"
+          data-name="WebMILE System"
+          class="WebMILE-System"
+        >WebMILE System
+        </div>
 
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div id="Graph_obj"
+          data-name="Graph"
+          class="Graph"
+        >
 
-<!-- Header-->
-        <header class="bg-primary bg-gradient text-white">
-            <div class="container px-4 text-center">
-                <h1 class="fw-bolder">WebMILE System</h1>
+          <div id="Existing-Embedding-4"
+              data-name="Existing Embedding"
+              class="Existing-Embedding-4"
+            >Graph
             </div>
-        </header>
-        <!-- About section-->
-        <section id="about">
-            <div class="container px-8">
-                <div class="row gx-8 justify-content-center">
-                    <div class="col-lg-18">
-                    <div class = "box">
-                    <div class="row">
-		            <div class="col-md-2">Graph:</div>
-		              	<form method="post" enctype="multipart/form-data">
-				    {% csrf_token %}
-				    <input type="file" name="graph">
-				    
-				
-                    </div>
-                    </div>
-                    
-                    
-                    <div class = "box">
-                    <div class="row">
-		            <div class="col-md-2">Coarsen Level:</div>
-		            
-		            	<div class="col-md-2"><input id="coarsen" name = "coarsen" type="number" min="0" class="form-control w-50" id="comm"></div>
-		            
-		            </div>
-                    </div>
-                    </div>
-                    
 
-                    <div class = "box">
-                    <div class="row">
-                    	    
-		            <div class="col-md-2">Embedding Dimension:</div>
-		            <div class="col-md-2"><input id="dim" name = "dim" type="number" min="0" class="form-control w-50" id="comm"></div>
-		            
-                    </div>
-                    </div>
-                    
-                    
-                    <div class = "parent">
-                    <div class="child">
-		            <div class="row">
-				    <label for="language" class="col-md-2" style="margin-right:10%;">Language:</label>
-				    <div class="col-md-2">				    	
-					    <select name="language" id="language">
-						 <option value="python" name="python">Python</option>
-						 <option value="java" name="java">Java</option>
-						 <option value="r" name="r">R</option>
-					    </select>
-					    
-				    </div>
-		            </div>
-                    </div>
-                    
-                  
-                    <div class="child">
-		            <div class="row">
-				    <div class="col-md-2" style="margin-right:10%;">Script:</div>
-				    
-					    <input type="file" name="script">
-					    
-				    
-		            </div>
-                   </div>
+          <div
+            id="Button-Child-Frame-2"
+            data-name="Button Child Frame"
+            class="Button-1-1"
+          >
 
-			
- 		    <div class="child">
-		            <div class="row">
-				    <div class="col-md-2" style="margin-right:10%;">Other files:</div>
-				    
-					    <input type="file" name="others">
-		            </div>
-                    </div>
-                    </div>
-                    
-                    <div class = "box">
-                    <div class="row">
-                    <div class="child">
-		            <div class="row">
-				    <label for="embedding" class="col-md-2" > Existing Embedding:</label>
-				    <div class="col-md-2">				    	
-					    <select name="embedding" id="embedding">
+
+            <div class="overlap">Choose File</div>
+            <input type="file" id="graph" name="graph" class="Button-1-1" onchange="getFileData()">
+
+          </div>
+
+        </div>
+        <p id= "graph_upload" class="Graph_upload"></p>
+        <div id="Coarsen level"
+          data-name="Coarsen"
+          class="Coarsen"
+        >
+            <div
+              id="Existing-Embedding-5"
+              data-name="Existing Embedding"
+              class="Existing-Embedding-5"
+            >Coarsen Level
+            </div>
+            <input id="coarsen" name="coarsen" type="number" min="0" class="form-control w-50"  >
+        </div>
+
+        <p id= "script_upload" class="Script_upload"></p>
+        <div id="Script_obj"
+          data-name="Script"
+          class="Script"
+        >
+            <div
+              id="Existing-Embedding-3"
+              data-name="Existing Embedding"
+              class="Existing-Embedding-3"
+            >Script
+            </div>
+            <div
+              id="Button-Child-Frame-3"
+              data-name="Button Child Frame"
+              class="Button-1-1"
+            >
+
+
+            <div class="overlap">Choose File</div>
+            <input type="file" name="script" id="script" class="Button-1-1" onchange="getScriptData()">
+
+          </div>
+
+        </div>
+
+        <div id="Existing-Embedding"
+          data-name="Existing Embedding"
+          class="Existing-Embedding"
+        >
+            <div
+              id="Existing-Embedding-1"
+              data-name="Existing Embedding"
+              class="Existing-Embedding-1"
+            >Existing Embedding
+            </div>
+
+
+
+            <div
+              id="Placeholder-Text-1"
+              data-name="Placeholder Text"
+
+            >
+              <select name="embedding" id="embedding" class="ListBox-Main-1">
 						 <option value="none">None</option>
 						 <option value="deepwalk">DeepWalk</option>
-						 <option value="ntemf">NetMF</option>
-						 <option value="node2vec">LINE</option>
+						 <option value="netmf">NetMF</option>
+						 <option value="line">LINE</option>
 						 <option value="node2vec">Node2Vec</option>
-						 <option value="deepwalk">GRAREP</option>
+						 <option value="grarep">GRAREP</option>
+              </select>
+
+
+
+            </div>
+
+          </div>
+
+
+        <div id="Embedding-Dimension"
+          data-name="Embedding Dimension"
+          class="Embedding-Dimension"
+        >
+            <div
+              id="Existing-Embedding-6"
+              data-name="Existing Embedding"
+              class="Existing-Embedding-6"
+            >Embedding Dimension
+            </div>
+            <input id="dim" name = "dim" type="number" min="0" class="form-control w-50">
+        </div>
+
+
+        <div id="Language"
+          data-name="Language"
+          class="Language"
+        >
+          <div
+              id="Language-1"
+              data-name="Language"
+              class="Language-1"
+            >Language
+            </div>
+
+            <div
+              id="Placeholder-Text"
+              data-name="Placeholder Text"
+
+            >
+          <select name="language" id="language" class="ListBox-Main">
+						 <option value="python" name="python" >Python</option>
+						 <option value="java" name="java" >Java</option>
+						 <option value="r" name="r" >R</option>
 					    </select>
-					    
-				    </div>
-		            </div>
-                    </div>
-                    </div>
-                    </div>
-                    
-                    <div class = "box">
-                    <div class="row">
-		            <div class="col-md-2">Execution Command:</div>
-		            <div><input id="comm" name = "comm" type="text" class="form-control w-75" id="comm" placeholder="java code.java -jar code.jar --param1 --param2"></div>
-                    </div>
-                    </div>
-                    
-                    <div class = "long-button" >
-                    
-		            <div class="d-grid gap-2 col-6 mx-auto">
-		            
-				  <button class="btn btn-primary" type="submit" name="run_mile">Run MILE</button>
-			    </form>  
-			    </div>
-                    
-                    </div>
-                    
-                    
-		    <p>{{ msg}}</p>
-		    {% if finish %}
-                    <a href="{{ download_link }}" download>
+            </div>
+
+        </div>
+
+        <div id="Command"
+          data-name="Command"
+          class="Command"
+        >
+
+            <div
+              id="Existing-Embedding-2"
+              data-name="Existing Embedding"
+              class="Existing-Embedding-2"
+            >Execution Command
+            </div>
+            <input id="comm" name = "comm" type="text" class="form-control w-75" placeholder="java code.java -jar code.jar --param1 --param2">
+          </div>
+        <div id="Button-1-1"
+            data-name="Button 1"
+            class="Button-Child-Frame-1"
+          >
+          <div
+          id="Button-Child-Frame-1"
+          data-name="Button Child Frame"
+          class="Button-1-2"
+            >
+           <div class="overlap">Run MILE</div>
+            <button type="submit" name="run_mile" id="run_mile" class="Button-1-2">Run MILE</button>
+
+
+          </div>
+
+        </div>
+
+    </form>
+
+
+
+		    {% if alert %}
+
+
+
+            <div class="alert">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             <p style="font-size:24px; color:black;">{{msg}}</p>
+            </div>
+            {% endif%}
+            {% if finish %}
+            <a class="Download" href="{{ download_link }}" download>
 			  Download the result
 			</a>
 			{% endif%}
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; MILE 2022</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-	<style>
-	header {
-	  padding-top: 4rem;
-	  padding-bottom: 3rem;
-	}
-	.lead {
-	  font-size: 1.25rem;
-	  font-weight: 300;
-	}
-	section {
-	  padding-top: 3rem;
-	  padding-bottom: 2rem;
-	}
-	.box {
-	  height:80px;
-	  
-	  
-	}
-	.long-button{
-	  height:80px;
-	  margin-top:30px;
-	}
-	
-	.parent{
-	  display: flex;
-	  flex-wrap: wrap;
-	}
-	.child {
-	  display: inline-block;
-	  margin: 0px;
-	  flex-grow: 1;
-	  width: 32%;
-	}
-	.row{
-	  margin-right: 0px;
-	}
-	
-	</style>
+
+
+    <script>
+    function getFileData() {
+      var filename = document.getElementById('graph').files[0].name;
+      document.getElementById("graph_upload").innerHTML = filename;
+    };
+    function getScriptData() {
+      var filename = document.getElementById('script').files[0].name;
+      document.getElementById("script_upload").innerHTML = filename;
+    };
+
+    </script>
     </body>
 </html>
 
