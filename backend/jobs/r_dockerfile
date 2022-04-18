@@ -5,6 +5,6 @@ RUN apt-get update \
   && apt-get install -y libgsl-dev python
 
 # install R-packages
-COPY install_packages.R .
+COPY src/install_packages.R .
 RUN Rscript install_packages.R
 

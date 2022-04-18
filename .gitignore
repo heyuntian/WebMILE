@@ -9,3 +9,4 @@ backend/jobs/test/.DS_Store
 *.pyc
 *.pyc
 backend/.DS_Store
+mysite/.DS_Store
