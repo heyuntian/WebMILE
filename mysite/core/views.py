@@ -36,9 +36,9 @@ def upload(request):
 				data['comm'] = request.POST['comm']
 				data["language"] = request.POST['language'].lower()
 			else:
-				script = request.FILES['script']
-				script_name = fs.save(script.name, script)
-				msg["script"] = script.name
+				# script = request.FILES['script']
+				# script_name = fs.save(script.name, script)
+				# msg["script"] = graph.name
 				data['comm'] = request.POST['comm']
 				# TODO: Make uploading optional. 
 				if exist_embed == 'line':
