@@ -2,6 +2,18 @@
 
 WebMILE is an easy-to-use embedding framework based on our previous works MILE [1] and DistMILE [2].
 
+Link: https://par.nsf.gov/servlets/purl/10355924
+
+Citation: 
+> @article{he2022webmile,
+  title={WebMILE: democratizing network representation learning at scale},
+  author={He, Yuntian and Zhang, Yue and Gurukar, Saket and Parthasarathy, Srinivasan},
+  journal={Proceedings of the VLDB Endowment},
+  volume={15},
+  number={12},
+  year={2022}
+}
+
 ### Requirements
 * **Python**: Our web interface and MILE system are Python-based. At your convenience, please use `Conda` to create a Python environment with `requirements.yml`. Our dependency mainly includes:
     * Django
